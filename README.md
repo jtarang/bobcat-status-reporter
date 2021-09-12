@@ -18,6 +18,12 @@ temperature be below 60C. I just wanted to make sure the temp did not exceed tha
 python report_miner_status.py 192.168.50.155 ./.credentials/bobcat-miner-service-account.json BobcatMinerReport
 ```
 I would set this up as a cronjob and run it every minute.
+- Crontab for *nix systems
+- Task Scheduler for Windows
+
+## Example Output
+- Google Sheets
+![](images/google_sheet_example.png)
 
 ## Future Features
 - Alert via Text Message if exceed temp threshold

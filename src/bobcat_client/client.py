@@ -14,15 +14,16 @@ class BobcatClient(BaseHttpClient):
 
     def get_temperature(self) -> Temperature:
         temp_response = self.do_get(api_endpoint=self.api_endpoints['temperature'])
-        return Temperature(raw_object=temp_response)
+        return Temperature(**temp_response)
 
     def get_sync_status(self) -> SyncStatus:
         sync_status = self.do_get(api_endpoint=self.api_endpoints['sync_status'])
-        return SyncStatus(raw_object=sync_status)
+        return SyncStatus(**sync_status)
 
 
 if __name__ == "__main__":
     miner_ip = "192.168.50.155"
     bobcat_client = BobcatClient(miner_ip_address=miner_ip)
+    status = bobcat_client.get_sync_status()
     temp = bobcat_client.get_temperature()
     print()

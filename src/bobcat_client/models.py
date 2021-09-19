@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from src.bobcat_client import MinerState
 
 
 @dataclass
@@ -11,7 +12,7 @@ class Temperature:
 
 @dataclass
 class SyncStatus:
-    status: str = field(default=None)
+    status: str = field(default=MinerState.offline)
     gap: int = field(default=None)
     miner_height: int = field(default=None)
     blockchain_height: int = field(default=None)

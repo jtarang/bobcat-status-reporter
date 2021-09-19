@@ -5,7 +5,7 @@ class RequestException(Exception):
         super().__init__(f"Host: {self.request.url}:: Response: {self.request.text}")
 
 
-class ApiKeyException(Exception):
+class HostCannotBeReachedException(Exception):
 
-    def __init__(self, api_key: str):
-        super().__init__(f"API Key `{api_key}` is not valid or in the correct format")
+    def __init__(self, host_address):
+        super().__init__(f"Host {host_address}: Cannot be reached")

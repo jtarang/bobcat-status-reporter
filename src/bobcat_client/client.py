@@ -1,5 +1,6 @@
 from src.base_http_client.client import BaseHttpClient
 from src.bobcat_client.models import SyncStatus, Temperature
+from src.base_http_client.exceptions import HostCannotBeReachedException
 
 
 class BobcatClient(BaseHttpClient):
@@ -13,12 +14,16 @@ class BobcatClient(BaseHttpClient):
         }
 
     def get_temperature(self) -> Temperature:
-        temp_response = self.do_get(api_endpoint=self.api_endpoints['temperature'])
-        return Temperature(**temp_response)
+        try:
+            return Temperature(**self.do_get(api_endpoint=self.api_endpoints['temperature']))
+        except HostCannotBeReachedException:
+            return Temperature()
 
     def get_sync_status(self) -> SyncStatus:
-        sync_status = self.do_get(api_endpoint=self.api_endpoints['sync_status'])
-        return SyncStatus(**sync_status)
+        try:
+            return SyncStatus(**self.do_get(api_endpoint=self.api_endpoints['sync_status']))
+        except HostCannotBeReachedException:
+            return SyncStatus()
 
 
 if __name__ == "__main__":

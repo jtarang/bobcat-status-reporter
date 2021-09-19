@@ -15,12 +15,14 @@ class BobcatClient(BaseHttpClient):
 
     def get_temperature(self) -> Temperature:
         try:
+            # take the response and pass it to the Temperature model directly
             return Temperature(**self.do_get(api_endpoint=self.api_endpoints['temperature']))
         except HostCannotBeReachedException:
             return Temperature()
 
     def get_sync_status(self) -> SyncStatus:
         try:
+            # take the response and pass it to the SyncStatus model directly
             return SyncStatus(**self.do_get(api_endpoint=self.api_endpoints['sync_status']))
         except HostCannotBeReachedException:
             return SyncStatus()

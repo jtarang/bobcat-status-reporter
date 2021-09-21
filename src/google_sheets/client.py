@@ -4,7 +4,7 @@ from typing import List
 
 import gspread
 import pandas
-from gspread_dataframe import set_with_dataframe, get_as_dataframe
+from gspread_dataframe import set_with_dataframe
 
 from src.google_sheets.exceptions import InvalidCredentialsFileException, CredentialsFileNotFoundError
 

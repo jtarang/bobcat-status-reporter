@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
-from src.bobcat_client import MinerState
-
+from src.bobcat_client.timezone_handler import TimezoneHandler
 
 @dataclass
 class Temperature:
@@ -9,6 +8,8 @@ class Temperature:
     temp1: int = field(default=None)
     unit: str = field(default=None)
 
+    def convert_timestamp_timezone(self, to_timezone: str):
+        self.timestamp = TimezoneHandler.convert_timezone(timestamp=self.timestamp, to_timezone=to_timezone)
 
 @dataclass
 class SyncStatus:

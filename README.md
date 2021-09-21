@@ -6,7 +6,7 @@ I recently relocated my miner from my root into the attic. Bobcat recommends ope
 temperature be below 60C. I just wanted to make sure the temp did not exceed that.
 
 ## Requirements
-- Python 3.8 or above
+- Python 3.9.*
 - Bobcat Miner
 - Google Sheets API Service Account
 
@@ -15,7 +15,6 @@ temperature be below 60C. I just wanted to make sure the temp did not exceed tha
 
 ## Arguments
 ```shell
-
 Usage: report_miner_status.py [OPTIONS] MINER_IP_ADDRESS
                               GOOGLE_SHEETS_CREDENTIALS_FILE_PATH
                               GOOGLE_SHEET_ID
@@ -30,8 +29,12 @@ Options:
   --worksheet-id INTEGER
   --clear-worksheet / --no-clear-worksheet
                                   [default: False]
+  --timezone TEXT
   --help                          Show this message and exit.
 ```
+
+Find your timezone string by searching for it [here](https://github.com/python/tzdata/blob/master/src/tzdata/zones)
+If no timezone is passed UTC is the default.
 
 ## Usage
 ```python3 
